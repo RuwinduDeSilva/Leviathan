@@ -184,6 +184,7 @@ Tith4cokei
 The password for the next level is "Tith4cokei"
 
 #Leviathan 5 to 6
+
 Here there is an executable file called "leviathan5" in "/home/leviathan5/" directory. When it execute it seems like it is tring to read from a file in "/temp/". We have explored that this file is owned by "Leviathan6" and it belongs to "Leviathan5" group. So it is posible to pull the password of the Leviathan6's password from "/etc/leviathan_pass/leviathan6".
 
 ```
@@ -207,6 +208,73 @@ leviathan5@melinda:~$
 ```
 
 Password for the next level is "UgaoFee4li"
+
+#Leviathan 6 to 7
+
+Here there is a executable file called "leviathan6" in "/home/leviathan6". And when that file is execute it requires a 4 digit password. There is no source to retrieve the password for that file and since it requires 4 digits the easiest thing to do is to write a small bash script to make a bruteforce attack.
+
+```
+leviathan6@melinda:~$ ls
+leviathan6
+leviathan6@melinda:~$ ./leviathan6
+usage: ./leviathan6 <4 digit code>
+leviathan6@melinda:~$ ./leviathan6 1234
+Wrong
+leviathan6@melinda:~$ mkdir /tmp/atack
+leviathan6@melinda:~$ cd /temp/atack
+leviathan6@melinda:/tmp/atack$ vi brutefoce.sh
+leviathan6@melinda:/tmp/atack$ cat brutefoce.sh
+#!/bin/bash
+
+for x in {0000..9999}
+do
+    ~/leviathan6 $x
+done
+leviathan6@melinda:/tmp/atack$ chmod +x brutefoce.sh
+leviathan6@melinda:~$
+```
+And when we run the bash file it results the following
+```
+...
+
+Wrong
+Wrong
+Wrong
+Wrong
+Wrong
+$
+$
+```
+In this nwe shell when we type "whoami" it prompts "leviathan7" and we can retrieve the password for the next level by geving a simple cat command to /etc/leviathan_pass/leviathan7 as follow.
+```
+$ whoami
+leviathan7
+$ cat /etc/leviathan_pass/leviathan7
+ahy7MaeBo9
+$
+```
+The password for the next level is "ahy7MaeBo9"
+
+#Leviathan 7
+
+This is the final place and there is a file called "CONGRATULATIONS" and when we explore the inside it prompts the folloing
+```
+leviathan7@melinda:~$ ls -la
+total 24
+drwxr-xr-x   2 root       root       4096 Nov 14  2014 .
+drwxr-xr-x 167 root       root       4096 Jul  9 16:27 ..
+-rw-r--r--   1 root       root        220 Apr  9  2014 .bash_logout
+-rw-r--r--   1 root       root       3637 Apr  9  2014 .bashrc
+-rw-r--r--   1 root       root        675 Apr  9  2014 .profile
+-r--r-----   1 leviathan7 leviathan7  178 Nov 14  2014 CONGRATULATIONS
+leviathan7@melinda:~$ cat CONGRATULATIONS
+Well Done, you seem to have used a *nix system before, now try something more se          rious.
+(Please don't post writeups, solutions or spoilers about the games on the web. T          hank you!)
+leviathan7@melinda:~$
+```
+
+This is the end of the Leviathan wargame.
+
 
 
 
