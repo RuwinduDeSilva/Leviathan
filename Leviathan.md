@@ -10,7 +10,25 @@ In overthewire wargames site, leviathan 0 page provides the user name and passwo
 Using the "ls" command we can find there is another derectory called ".backup".
 Inside of that there is a html file with full of text. So to retrieve the password we use cat command with grep by giveing a keyword as password.
 
-Leviathan 1 pic
+```
+leviathan0@melinda:~$ ls -la
+total 24
+drwxr-xr-x   3 root       root       4096 Nov 14  2014 .
+drwxr-xr-x 167 root       root       4096 Jul  9 16:27 ..
+drwxr-x---   2 leviathan1 leviathan0 4096 Jul 17 16:44 .backup
+-rw-r--r--   1 root       root        220 Apr  9  2014 .bash_logout
+-rw-r--r--   1 root       root       3637 Apr  9  2014 .bashrc
+-rw-r--r--   1 root       root        675 Apr  9  2014 .profile
+leviathan0@melinda:~$ cd .backup/
+leviathan0@melinda:~/.backup$ ls -la
+total 140
+drwxr-x--- 2 leviathan1 leviathan0   4096 Jul 17 16:44 .
+drwxr-xr-x 3 root       root         4096 Nov 14  2014 ..
+-rw-r----- 1 leviathan1 leviathan0 133259 Nov 14  2014 bookmarks.html
+leviathan0@melinda:~/.backup$ cat bookmarks.html |grep password
+<DT><A HREF="http://leviathan.labs.overthewire.org/passwordus.html | This will be fixed later, the password for leviathan1 is rioGegei8m" ADD_DATE="1155384634" LAST_CHARSET="ISO-8859-1" ID="rdf:#$2wIU71">password to leviathan1</A>
+leviathan0@melinda:~/.backup$
+```
 
 The password for the next level is **"rioGegei8m"**
 
@@ -21,7 +39,6 @@ Using "ls" command we found that there is an exicutable file and executed it. It
 
 It guids us to another session and by entering "whoami" it says that it is leviathan2. So by entering quick "cat" command we can find the password for the next level.
 
-Leviathan 2 pic
 ```
 leviathan1@melinda:~$ ls -al
 total 28
@@ -62,6 +79,7 @@ $ ougahZi8Ta
 The password for the next level is **"ougahZi8Ta"**
 
 #Leviathan 2 to 3
+
 We have located an executable file called printfile in the "/home/leviathan2". When we execute that it requires a text file to continue. So We creates a .txt file at /tmp/ans/ derectory and ryn the executable with ltrace. It shows that access() does is check permissions based on the process’ real user ID rather than the effective user ID. Using that vulnerability we get the password for the next level.
 
 ```
@@ -108,7 +126,7 @@ leviathan2@melinda:~$ pwd
 leviathan2@melinda:~$
 ```
 
-Password for the next level is "Ahdiemoo1j"
+Password for the next level is **"Ahdiemoo1j"**
 
 #Leviathan 3 to 4
 
@@ -181,7 +199,7 @@ leviathan4@melinda:~/.trash$ echo 01010100 01101001 01110100 01101000 00110100 0
 Tith4cokei
 ```
 
-The password for the next level is "Tith4cokei"
+The password for the next level is **"Tith4cokei"**
 
 #Leviathan 5 to 6
 
@@ -207,7 +225,7 @@ UgaoFee4li
 leviathan5@melinda:~$
 ```
 
-Password for the next level is "UgaoFee4li"
+Password for the next level is **"UgaoFee4li"**
 
 #Leviathan 6 to 7
 
@@ -253,7 +271,7 @@ $ cat /etc/leviathan_pass/leviathan7
 ahy7MaeBo9
 $
 ```
-The password for the next level is "ahy7MaeBo9"
+The password for the next level is **"ahy7MaeBo9"**
 
 #Leviathan 7
 
