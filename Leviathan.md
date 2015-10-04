@@ -112,5 +112,50 @@ Password for the next level is "Ahdiemoo1j"
 
 #Leviathan 3 to 4
 
+Here we can find an executable file called "level3" and whrn it runs it requires a password. To get to know what string is the function is looking for, in other words that is the password, we enter the "strings" command nad it outputs all the strings that contains in the file "level3".
 
+```
+leviathan3@melinda:~$ strings ./level3
+.
+.
+.
+GLIBC_2.0
+PTRh@
+snlp
+rintf
+D$L1
+D$#bombf
+D$'ad
+D$8...s
+D$<3cr3f
+D$@t
+D$*h0nof
+D$.33
+D$1kakaf
+D$5ka
+D$B*32.
+D$F2*[xf
+D$J]
+T$Le3
+[^_]
+[You've got shell]!
+/bin/sh
+bzzzzzzzzap. WRONG
+Enter the password>
+;*2$"
+secret
+GCC: (Ubuntu 4.8.2-19ubuntu1) 4.8.2
+.
+.
+.
+```
+Here, clear text before "[You've got shell]!" text, "snlp" and "rintf" is suspicious as the password and we tried that and it gaves a new shell and it is Leviathan4 shell.
+By giveing a symple cat command to "/etc/leviathan_pass/leviathan4" file we can retrieve the password for the next level.
 
+```
+$ whoami
+leviathan4
+$ cat /etc/leviathan_pass/leviathan4
+vuH0coox6m
+$
+```
