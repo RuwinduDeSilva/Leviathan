@@ -144,8 +144,8 @@ Enter the password>
 ;*2$"
 secret
 GCC: (Ubuntu 4.8.2-19ubuntu1) 4.8.2
-...
 
+...
 ```
 Here, clear text before "[You've got shell]!" text, "snlp" and "rintf" is suspicious as the password and we tried that and it gaves a new shell and it is Leviathan4 shell.
 By giveing a symple cat command to "/etc/leviathan_pass/leviathan4" file we can retrieve the password for the next level.
