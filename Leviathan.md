@@ -4,7 +4,7 @@
 
 **Curtin ID** - 18297188
 
-#Levoathan 0 to 1
+#Leviathan 0 to 1
 In overthewire wargames site, leviathan 0 page provides the user name and password ro the leviathan 0
 
 Using the "ls" command we can find there is another derectory called ".backup".
@@ -32,7 +32,7 @@ leviathan0@melinda:~/.backup$
 
 The password for the next level is **"rioGegei8m"**
 
-#Bandit 1 to 2
+#Leviathan 1 to 2
 We have retrived the password for this level in previous level.
 
 Using "ls" command we found that there is an exicutable file and executed it. It has protected with password and probably it may contains the password for the next level. To check which function the executable runs we uses the command "ltrace". We can see it runs "strcmp()" function and it compare the user input with the string "sex" and that means the password for that is "sex".
